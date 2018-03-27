@@ -1,6 +1,6 @@
 from gimpfu import *
 
-#gimp-console-2.8.exe -idf --batch-interpreter python-fu-eval -b "import example; example.run(2)" -b "pdb.gimp_quit(1)"
+#gimp-console-2.8.exe -id --batch-interpreter python-fu-eval -b "import example; example.run(2)" -b "pdb.gimp_quit(1)"
 
 #call gimp.exe to execute the python script
 #python script must be written inside functions with at least 1 arg
@@ -28,6 +28,14 @@ def run(a):
 		#transform perspective
 		#top-left, top-right, btm-left, btm-right
 		layer = pdb.gimp_item_transform_perspective(layer,82,55, 510,21,80,325, 510, 350)
+		
+		#create text layer
+		textlayer = pdb.gimp_text_layer_new(image,"CN","Sans", 30, 0)
+		#add to image
+		image.add_layer(textlayer)
+		#transform perspective
+		#top-left, top-right, btm-left, btm-right
+		textlayer = pdb.gimp_item_transform_perspective(textlayer,90,60,140,55,90,95, 140,95)
 		
 		
 		#merge layer
